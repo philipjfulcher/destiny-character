@@ -30,14 +30,16 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('build', ['copy-bower', 'copy-src', 'create-template-cache'], function () {
+gulp.task('build', ['copy-bower', 'copy-src', 'copy-assets', 'copy-styles', 'create-template-cache'], function () {
     var target = gulp.src('./src/app/index.html');
   // It's not necessary to read the files (will speed up things), we're only after their paths: 
   var appSources = gulp.src(['./build/src/**/*.js', './build/app.templates.js']).pipe(filesort()).pipe(print());
   var bowerSources = gulp.src('./bower.json').pipe(bowerFiles()).pipe(print());
+  var styleSources = gulp.src(['./build/styles/**/*']).pipe(print());
 
   return target
     .pipe(inject(appSources, {name: 'app'}))
+    .pipe(inject(styleSources, {name: 'app'}))
     .pipe(inject(bowerSources, {name: 'bower'}))
     .pipe(gulp.dest('./build'));
 });
@@ -56,9 +58,20 @@ gulp.task('copy-bower', function () {
 });
 
 gulp.task('copy-src', function () {
-  return gulp.src('./src/**/*.js')
+  return gulp.src(['./src/**/*.js'])
     .pipe(filesort())
     .pipe(gulp.dest('./build/src'));
+});
+
+gulp.task('copy-assets', function () {
+return gulp.src('./src/assets/*')
+    .pipe(gulp.dest('./build/assets'));
+});
+
+gulp.task('copy-styles', function () {
+    return gulp.src('./src/styles/**/*.css')
+        .pipe(print())
+        .pipe(gulp.dest('./build/styles/'));
 });
 
 gulp.task('create-template-cache', function () {
