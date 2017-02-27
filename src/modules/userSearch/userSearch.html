@@ -1,0 +1,16 @@
+<h1>Search for a user</h1>
+<form name="userSearchForm">
+    <label ng-repeat="platform in vm.platforms">
+        <input type="radio" ng-model="vm.platform" ng-value="platform.value">
+        {{platform.label}}
+    </label>
+    
+    <input type="text" ng-model="vm.searchText">
+    <button type="submit" ng-click="vm.searchForUser()">Search</button>
+</form>
+<p>{{vm.platform}}</p>
+<div ng-if="vm.doingSearch">Searching...</div>
+<div ng-repeat="searchResult in vm.searchResults">
+    Name: {{searchResult.displayName}} <br>
+    ID: {{searchResult.membershipId}}
+</div>
