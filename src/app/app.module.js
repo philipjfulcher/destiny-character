@@ -3,7 +3,7 @@
 
     angular.module('app', [
         'ngRoute',
-        // 'app.character',
+        'app.character',
         // 'app.inventorySlot',
         'app.bungieAPI',
         'app.userSearch',

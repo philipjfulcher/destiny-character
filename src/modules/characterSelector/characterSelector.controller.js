@@ -5,20 +5,25 @@
         .module('app.characterSelector')
         .controller('CharacterSelectorController', CharacterSelectorController);
 
-    CharacterSelectorController.$inject = ['BungieAPI', '$q', '$routeParams'];
-    function CharacterSelectorController(BungieAPI, $q, $routeParams) {
+    CharacterSelectorController.$inject = ['BungieAPI', '$q', '$routeParams', '$location'];
+    function CharacterSelectorController(BungieAPI, $q, $routeParams, $location) {
         var vm = this;
 
         var platform = $routeParams.platform;
         var username = $routeParams.username;
 
         vm.classTypes = BungieAPI.dictionary.classTypes;
+        vm.selectCharacter = selectCharacter;
 
         activate();
 
         function activate () {
             getCharacters();
+        }
 
+
+        function selectCharacter (character) {
+            $location.path('/user/' + platform + '/' + username + '/character/' + character.characterBase.characterId);
         }
 
         //private functions

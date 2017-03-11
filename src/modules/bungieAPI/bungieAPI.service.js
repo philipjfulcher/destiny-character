@@ -113,8 +113,8 @@
                 });         
         }
 
-        function getInventory(playerId,characterId) {
-            var endpoint = this.baseSecureUrl+this.membershipTypes.playstation+'/';
+        function getInventory(platform, playerId,characterId) {
+            var endpoint = this.baseSecureUrl+platform+'/';
             endpoint += 'Account/';
             endpoint += playerId+'/';
             endpoint += 'Character/';
