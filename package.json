@@ -22,6 +22,11 @@
     "gulp-inject": "^4.2.0",
     "gulp-print": "^2.0.1",
     "gulp-sass": "^3.1.0",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "gulp-main-bower-files": "^1.6.1",
+    "gulp-minify-html": "^1.0.6",
+    "gulp-angular-templatecache": "^2.0.0",
+    "gulp-watch": "^4.3.11",
+    "gulp-batch": "^1.0.5"
   }
 }
