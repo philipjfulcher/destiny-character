@@ -6,7 +6,8 @@
         // 'app.character',
         // 'app.inventorySlot',
         'app.bungieAPI',
-        'app.userSearch'
+        'app.userSearch',
+        'app.characterSelector'
     ]);
 
 })(angular);

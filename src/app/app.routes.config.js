@@ -9,6 +9,11 @@ angular
           controller: 'UserSearchController',
           controllerAs: 'vm'
         })
+        .when('/user/:platform/:username', {
+          templateUrl: 'modules/characterSelector/characterSelector.html',
+          controller: 'CharacterSelectorController',
+          controllerAs: 'vm'
+        })
         // .when('/user/:platform/:username', {
         //   templateUrl: 'modules/characterSelect/characterSelect.html',
         //   controller: 'UserSearchController',

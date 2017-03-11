@@ -8,6 +8,8 @@ var minifyHtml = require('gulp-minify-html');
 var angularTemplatecache = require('gulp-angular-templatecache');
 var watch = require('gulp-watch');
 var batch = require('gulp-batch');
+var sass = require('gulp-sass');
+ 
 
 var config = {
     htmltemplates: './src/**/*.html',
@@ -30,7 +32,7 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('build', ['copy-bower', 'copy-src', 'copy-assets', 'copy-styles', 'create-template-cache'], function () {
+gulp.task('build', ['copy-bower', 'copy-src', 'copy-assets', 'compile-sass', 'create-template-cache'], function () {
     var target = gulp.src('./src/app/index.html');
   // It's not necessary to read the files (will speed up things), we're only after their paths: 
   var appSources = gulp.src(['./build/src/**/*.js', './build/app.templates.js']).pipe(filesort()).pipe(print());
@@ -68,10 +70,10 @@ return gulp.src('./src/assets/*')
     .pipe(gulp.dest('./build/assets'));
 });
 
-gulp.task('copy-styles', function () {
-    return gulp.src('./src/styles/**/*.css')
-        .pipe(print())
-        .pipe(gulp.dest('./build/styles/'));
+gulp.task('compile-sass', function () {
+  return gulp.src('./src/**/*.scss')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('./build/styles'));
 });
 
 gulp.task('create-template-cache', function () {

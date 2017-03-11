@@ -24,6 +24,23 @@
                 classItem: '1585787867',
                 legs: '20886954',
                 artifact: '434908299',
+            },
+            classTypes: {
+                0: 'Titan',
+                1: 'Hunter',
+                2: 'Warlock',
+                3: 'Unknown'
+            },
+            genders: {
+                0: 'Male',
+                1: 'Female',
+                3: 'Unknown'
+            },
+            races: {
+                0: 'Human',
+                1: 'Awoken',
+                '898834093': 'Exo',
+                3: 'Unknown'
             }
         }
         
@@ -34,10 +51,17 @@
         this.getCharacters = getCharacters;
         this.getInventory = getInventory;
 
-        this.membershipTypes = {
-            xbox: 1,
-            playstation: 2
-        };
+        this.platforms = [
+            {
+                label: "Xbox",
+                membershipType: "1"
+            },
+            {
+                label: "PSN",
+                membershipType: "2"
+            }
+        ];
+
         this.apiKey = 'af5e4d8c07084d2bae22d053a646bb5d';
 
 
@@ -48,6 +72,12 @@
         };
 
         ////////////////
+
+        function getCharacterDefinitions () {
+            var endpoint = this.baseSecureUrl + platforms[0].membershipType +'/';
+            endpoint += 'Account/?definitions=true';
+        }
+
         function getInventoryItem(inventoryId) {
             var url = this.baseSecureUrl+'Manifest/InventoryItem/'+inventoryId+'/?definitions=true';
 
@@ -60,8 +90,8 @@
 
         function getPlayerDetails (playerName, platform) {
             var endpoint = this.baseSecureUrl+'SearchDestinyPlayer/';
-            endpoint += this.membershipTypes[platform]+'/';
-            endpoint += playerName+'/';
+            endpoint += platform + '/';
+            endpoint += playerName + '/';
 
             return $http
                 .get(endpoint, this.defaultConfig)
@@ -71,15 +101,15 @@
 
         }
 
-        function getCharacters (playerId) {
-            var endpoint = this.baseSecureUrl+this.membershipTypes.playstation+'/';
+        function getCharacters (platform, playerId) {
+            var endpoint = this.baseSecureUrl + platform +'/';
             endpoint += 'Account/';
-            endpoint += playerId+'/';
+            endpoint += playerId+'/?definitions=true';
 
             return $http
                 .get(endpoint, this.defaultConfig)
                 .then(function(response) {
-                    return response.data.Response.data.characters;
+                    return response.data.Response;
                 });         
         }
 

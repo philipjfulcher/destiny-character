@@ -1,7 +1,7 @@
 <h1>Search for a user</h1>
 <form name="userSearchForm">
     <label ng-repeat="platform in vm.platforms">
-        <input type="radio" ng-model="vm.platform" ng-value="platform.value">
+        <input type="radio" ng-model="vm.platform" ng-value="platform.membershipType">
         {{platform.label}}
     </label>
     

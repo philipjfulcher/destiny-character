@@ -1,0 +1,7 @@
+$assetsDir: '/build/assets';
+
+body {
+    background-image: url('#{$assetsDir}/background.jpg');
+    background-size: cover;
+    color: #fff;
+}

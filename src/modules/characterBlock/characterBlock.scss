@@ -1,0 +1,33 @@
+character-block {
+    width: 474px;
+    height: 96px;
+    display: block;
+    position: relative;
+
+    .character-block-wrapper {
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+    }
+
+    .character-block-emblem {
+        position:absolute;
+        top: 0;
+        left: 0;
+        height: 96px;
+        width: 96px;
+    }
+
+    .character-block-details {
+        position: absolute;
+        display: block;
+        top: 0px;
+        left: 96px;
+        padding: 5px;
+    }
+
+    .character-block-details-class {
+        font-size: 24px;
+        font-weight: 400;
+    }
+}

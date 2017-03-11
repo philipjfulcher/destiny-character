@@ -5,21 +5,13 @@
         .module('app.userSearch')
         .controller('UserSearchController', UserSearchController);
 
-    UserSearchController.$inject = ['BungieAPI', '$q'];
-    function UserSearchController(BungieAPI, $q) {
+    UserSearchController.$inject = ['BungieAPI', '$q', '$location'];
+    function UserSearchController(BungieAPI, $q, $location) {
         var vm = this;
         vm.platform = "";
         vm.searchText = "";
-        vm.platforms = [
-            {
-                label: "Xbox",
-                value: "xbox"
-            },
-            {
-                label: "PSN",
-                value: "playstation"
-            }
-        ];
+        vm.platforms = BungieAPI.platforms;
+
         vm.doingSearch = false;
 
         vm.searchForUser = function() {
@@ -27,6 +19,9 @@
             BungieAPI.getPlayerDetails(vm.searchText, vm.platform).then(function(searchResults) {
                 vm.searchResults = searchResults;
                 vm.doingSearch = false;
+                if(searchResults.length > 0) {
+                    $location.path('/user/' + vm.platform + '/' + searchResults[0].displayName)
+                }
             });
         }
         
