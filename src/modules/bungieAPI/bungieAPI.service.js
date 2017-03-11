@@ -119,7 +119,7 @@
             endpoint += playerId+'/';
             endpoint += 'Character/';
             endpoint += characterId+'/';
-            endpoint += 'Inventory/Summary/';
+            endpoint += 'Inventory/Summary/?definitions=true';
 
             return $http
                 .get(endpoint, this.defaultConfig)
