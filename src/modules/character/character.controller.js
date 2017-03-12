@@ -5,8 +5,8 @@
         .module('app.character')
         .controller('CharacterController', CharacterController);
 
-    CharacterController.$inject = ['BungieAPI', '$q', '$routeParams'];
-    function CharacterController(BungieAPI, $q, $routeParams) {
+    CharacterController.$inject = ['BungieAPI', 'inventoryService', '$q', '$routeParams'];
+    function CharacterController(BungieAPI, inventoryService, $q, $routeParams) {
         var vm = this;
                  
         var platform = $routeParams.platform;
@@ -27,8 +27,8 @@
         }
 
         function getInventory (playerId) {
-            BungieAPI.getInventory(platform, playerId, characterId).then(function(inventoryItems) {
-                vm.inventoryItems = inventoryItems;
+            inventoryService.getCharacterInventory(platform, playerId, characterId).then(function(items) {
+                vm.items = items;
             });
         }
         ///private functions

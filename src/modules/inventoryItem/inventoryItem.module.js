@@ -1,7 +1,7 @@
 (function(angular) {
     'use strict';
 
-    angular.module('app.inventorySlot', [
+    angular.module('app.inventoryItem', [
         
     ]);
 })(angular);

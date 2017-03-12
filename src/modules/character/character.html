@@ -1,6 +1,3 @@
 <h1>Character</h1>
-{{character.characterLevel}} - {{vm.classTypes[character.characterBase.classType]}} ({{character.characterBase.powerLevel}} LL)
-<ul>
-    <li ng-repeat="item in vm.inventoryItems">{{item.itemId}}</li>
-</ul>
-<inventory-slot items-="character.items.primary"></inventory-slot>
+
+<inventory-item item="item" ng-repeat="item in vm.items"></inventory-item>

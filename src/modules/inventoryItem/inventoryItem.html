@@ -1,0 +1,18 @@
+<div class="inventory-item">
+    <div class="inventory-item-wrapper" ng-style="{'background-image': 'url({{vm.item.iconURL}})'}">
+        
+    </div>
+    
+    <div class="inventory-item-hover-over">
+        <img ng-src="{{vm.item.damageTypeIconURL}}" alt="">
+        {{vm.item.name}} <br>
+        {{vm.item.type}} <br>
+        {{vm.item.tier}} <br>
+        {{vm.item.primaryStat.value}} {{vm.item.primaryStat.name}} <br>
+        <ul>
+            <li ng-repeat="stat in vm.item.stats">
+                {{stat.name}}: {{stat.value}}
+            </li>
+        </ul>
+    </div>
+</div>

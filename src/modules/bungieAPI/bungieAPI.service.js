@@ -11,6 +11,7 @@
         this.baseUrl = 'www.bungie.net/platform/Destiny/';
         this.baseInsecureUrl = 'http://'+this.baseUrl;
         this.baseSecureUrl = 'https://'+this.baseUrl;
+        this.assetsUrl = 'http://www.bungie.net/';
 
         this.dictionary = {
             inventorySlots: {
@@ -50,6 +51,33 @@
         this.getPlayerDetails = getPlayerDetails;
         this.getCharacters = getCharacters;
         this.getInventory = getInventory;
+        this.sendRequest = sendRequest;
+        
+        function sendRequest(method, endpoint, useSecureUrl, requestDefinitions) {
+            var httpFunction;
+            var url;
+
+            if(useSecureUrl) {
+                url = this.baseSecureUrl;
+            } else {
+                url = this.baseInsecureUrl;
+            }
+
+            url += endpoint;
+
+            if(requestDefinitions) {
+                url += '?definitions=true';
+            }
+
+            if($http[method]) {
+                httpFunction = $http[method];
+
+                return httpFunction(url, this.defaultConfig)
+                    .then(function(response) {
+                        return response.data.Response;
+                    });
+            }
+        }
 
         this.platforms = [
             {
@@ -124,7 +152,7 @@
             return $http
                 .get(endpoint, this.defaultConfig)
                 .then(function(response) {
-                    return response.data.Response.data.items;
+                    return response.data.Response;
                 }); 
         }
 

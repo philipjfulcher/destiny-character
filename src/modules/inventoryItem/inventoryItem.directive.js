@@ -2,16 +2,16 @@
     'use strict';
 
     angular
-        .module('app.inventorySlot')
-        .directive('inventorySlot', inventorySlot);
+        .module('app.inventoryItem')
+        .directive('inventoryItem', inventoryItem);
 
-    function inventorySlot() {
+    function inventoryItem() {
         var directive = {
-            controller: 'InventorySlotController',
+            controller: 'InventoryItemController',
             controllerAs: 'vm',
-            templateUrl: 'modules/inventorySlot/inventorySlot.html',
+            templateUrl: 'modules/inventoryItem/inventoryItem.html',
             scope: {
-                items: "="
+                item: "="
             },
             bindToController: true
         };

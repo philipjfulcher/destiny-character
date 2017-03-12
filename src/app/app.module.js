@@ -4,7 +4,7 @@
     angular.module('app', [
         'ngRoute',
         'app.character',
-        // 'app.inventorySlot',
+        'app.inventoryItem',
         'app.bungieAPI',
         'app.userSearch',
         'app.characterSelector'
