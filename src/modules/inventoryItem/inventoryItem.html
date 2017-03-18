@@ -1,18 +1,24 @@
 <div class="inventory-item">
-    <div class="inventory-item-wrapper" ng-style="{'background-image': 'url({{vm.item.iconURL}})'}">
+    <div class="inventory-item-icon" ng-mouseenter="vm.showInventoryIconHoverOver(true)" ng-mouseleave="vm.showInventoryIconHoverOver(false)" ng-style="{'background-image': 'url({{vm.item.iconURL}})'}">
         
     </div>
     
-    <div class="inventory-item-hover-over">
-        <img ng-src="{{vm.item.damageTypeIconURL}}" alt="">
-        {{vm.item.name}} <br>
-        {{vm.item.type}} <br>
-        {{vm.item.tier}} <br>
-        {{vm.item.primaryStat.value}} {{vm.item.primaryStat.name}} <br>
-        <ul>
-            <li ng-repeat="stat in vm.item.stats">
-                {{stat.name}}: {{stat.value}}
-            </li>
-        </ul>
+    <div class="inventory-item-hover-over" ng-class="{'active': vm.hoverOverVisible}" ng-style="{'top': vm.topAdjustment}">
+        <div class="inventory-item-hover-over-header" ng-class="vm.headerTierClasses">
+            <span>{{vm.item.name}}</span>
+            <span>{{vm.item.type}}</span>
+            <span>{{vm.item.tier.name}}</span>
+        </div>
+        <div class="inventory-item-hover-over-body">
+            <img ng-src="{{vm.item.damageTypeIconURL}}" alt="">
+            
+            {{vm.item.primaryStat.value}} {{vm.item.primaryStat.name}} <br>
+            <ul>
+                <li ng-repeat="stat in vm.item.stats">
+                    {{stat.name}}: {{stat.value}}
+                </li>
+            </ul>
+        </div>
+        
     </div>
 </div>

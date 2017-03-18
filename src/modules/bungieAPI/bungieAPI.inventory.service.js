@@ -54,7 +54,10 @@
 
                 transformedItem.name = itemDefinition.itemName;
                 transformedItem.type = itemDefinition.itemTypeName;
-                transformedItem.tier = itemDefinition.tierTypeName;
+                transformedItem.tier = {
+                    name: itemDefinition.tierTypeName,
+                    type: itemDefinition.tierType
+                };
                 
                 if(itemDefinition.primaryBaseStatHash !== 0) {
                     transformedItem.primaryStat = {

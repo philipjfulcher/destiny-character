@@ -1,12 +1,49 @@
+$legendaryColor: rgba(78,50,99,0.9);
+$exoticColor: rgba(206,174,50,0.9);
+
 inventory-item {
     
     display: block;
     position: relative;
+    padding-bottom: 6px;
 
-    .inventory-item-wrapper {
+    .inventory-item-icon {
         width: 96px;
         height: 96px;
         
         background-size: cover;
+        border: solid 3px #fff;
+    }
+
+    .inventory-item-hover-over {
+        width: 245px;
+        color: #f5f5f5;
+        position: absolute;
+        left: 120px;
+        top: 0;
+        opacity: 0;
+        transition: all 200ms;
+
+        &.active {
+            opacity: 1;
+        }
+
+        .inventory-item-hover-over-header {
+            height: 64px;
+            padding: 18px;
+            &.tier-legendary {
+                background-color: $legendaryColor;
+            }
+
+            &.tier-exotic {
+                background-color: $exoticColor;
+            }
+        }
+
+        .inventory-item-hover-over-body {
+            height: 305px;
+            padding: 18px;
+            background-color: rgba(17,12,21,0.95)
+        }
     }
 }
