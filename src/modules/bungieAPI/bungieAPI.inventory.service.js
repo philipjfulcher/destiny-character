@@ -73,7 +73,9 @@
                         var transformedStat = {};
 
                         transformedStat.name = definitions.stats[stat.statHash].statName;
-                        transformedStat.value = itemDefinition.stats[stat.statHash].value;
+                        if(itemDefinition.stats[stat.statHash]) {
+                            transformedStat.value = itemDefinition.stats[stat.statHash].value;
+                        }
 
                         return transformedStat;
                     });

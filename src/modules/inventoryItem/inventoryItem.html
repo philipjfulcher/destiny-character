@@ -5,9 +5,14 @@
     
     <div class="inventory-item-hover-over" ng-class="{'active': vm.hoverOverVisible}" ng-style="{'top': vm.topAdjustment}">
         <div class="inventory-item-hover-over-header" ng-class="vm.headerTierClasses">
-            <span>{{vm.item.name}}</span>
-            <span>{{vm.item.type}}</span>
-            <span>{{vm.item.tier.name}}</span>
+            <div class="inventory-item-hover-over-header-name">
+                <span data-fittext>{{vm.item.name}}</span>
+            </div>
+            <div class="inventory-item-hover-over-header-details">
+                <span class="inventory-item-hover-over-header-details-type">{{vm.item.type}}</span>
+                <span class="inventory-item-hover-over-header-details-tier">{{vm.item.tier.name}}</span>
+            </div>
+            
         </div>
         <div class="inventory-item-hover-over-body">
             <img ng-src="{{vm.item.damageTypeIconURL}}" alt="">

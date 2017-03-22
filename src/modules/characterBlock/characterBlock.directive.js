@@ -4,7 +4,7 @@ angular
 
 function characterBlock() {
     var directive = {
-        restrict: 'EA',
+        restrict: 'E',
         templateUrl: 'modules/characterBlock/characterBlock.html',
         scope: {
             character: '=',

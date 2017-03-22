@@ -1,4 +1,10 @@
-<h1>Select a character</h1>
-<h2>{{vm.playerDetails.displayName}}</h2>
-<h1>{{vm.title}}</h1>
-<character-block ng-click="vm.selectCharacter(character)" character="character" definitions="vm.characterDefinitions" ng-repeat="character in vm.characters"></character-block>
+<div class="left column">
+    <h1>Select a character</h1>
+    <h2>{{vm.playerDetails.displayName}}</h2>
+    <character-block ng-click="vm.selectCharacter(character)" character="character" definitions="vm.characterDefinitions" ng-repeat="character in vm.characters"></character-block>
+</div>
+<div class="right column">
+    <character ng-if="vm.selectedCharacterId" character-id="vm.selectedCharacterId" platform="vm.platform" player-id="vm.playerDetails.membershipId"></character>
+</div>
+
+

@@ -3,6 +3,7 @@
 
     angular.module('app', [
         'ngRoute',
+        'ngFitText',
         'app.character',
         'app.inventoryItem',
         'app.bungieAPI',

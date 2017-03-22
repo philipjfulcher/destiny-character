@@ -14,11 +14,11 @@ angular
           controller: 'CharacterSelectorController',
           controllerAs: 'vm'
         })
-        .when('/user/:platform/:username/character/:characterId', {
-            templateUrl: 'modules/character/character.html',
-            controller: 'CharacterController',
-            controllerAs: 'vm'
-        })
+        // .when('/user/:platform/:username/character/:characterId', {
+        //     templateUrl: 'modules/character/character.html',
+        //     controller: 'CharacterController',
+        //     controllerAs: 'vm'
+        // })
         .otherwise('/');
     }
   ]);

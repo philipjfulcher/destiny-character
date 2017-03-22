@@ -5,29 +5,20 @@
         .module('app.character')
         .controller('CharacterController', CharacterController);
 
-    CharacterController.$inject = ['BungieAPI', 'inventoryService', '$q', '$routeParams'];
-    function CharacterController(BungieAPI, inventoryService, $q, $routeParams) {
+    CharacterController.$inject = ['BungieAPI', 'inventoryService', '$q'];
+    function CharacterController(BungieAPI, inventoryService, $q) {
         var vm = this;
-                 
-        var platform = $routeParams.platform;
-        var username = $routeParams.username;
-        var characterId = $routeParams.characterId;
-        var playerId;
 
         activate();
 
         ////////////////
 
         function activate() { 
-            getPlayerId().then(function (playerId) {
-                playerId = playerId;
-                getInventory(playerId);
-            });
-            
+            getInventory();   
         }
 
         function getInventory (playerId) {
-            inventoryService.getCharacterInventory(platform, playerId, characterId).then(function(items) {
+            inventoryService.getCharacterInventory(vm.platform, vm.playerId, vm.characterId).then(function(items) {
                 vm.items = items;
             });
         }

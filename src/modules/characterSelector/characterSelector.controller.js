@@ -5,14 +5,13 @@
         .module('app.characterSelector')
         .controller('CharacterSelectorController', CharacterSelectorController);
 
-    CharacterSelectorController.$inject = ['BungieAPI', '$q', '$routeParams', '$location'];
-    function CharacterSelectorController(BungieAPI, $q, $routeParams, $location) {
+    CharacterSelectorController.$inject = ['BungieAPI', '$q', '$routeParams', '$location', '$timeout'];
+    function CharacterSelectorController(BungieAPI, $q, $routeParams, $location, $timeout) {
         var vm = this;
-
-        var platform = $routeParams.platform;
         var username = $routeParams.username;
 
-        vm.classTypes = BungieAPI.dictionary.classTypes;
+        vm.platform = $routeParams.platform;
+
         vm.selectCharacter = selectCharacter;
 
         activate();
@@ -23,16 +22,19 @@
 
 
         function selectCharacter (character) {
-            $location.path('/user/' + platform + '/' + username + '/character/' + character.characterBase.characterId);
+            vm.selectedCharacterId = null;
+            $timeout(function() {
+                vm.selectedCharacterId = character.characterBase.characterId;
+            });
         }
 
         //private functions
         function getCharacters () {
-            BungieAPI.getPlayerDetails(username, platform).then(function(searchResults) {
+            BungieAPI.getPlayerDetails(username, vm.platform).then(function(searchResults) {
                 if(searchResults.length > 0) {
                     vm.playerDetails = searchResults[0];
 
-                    BungieAPI.getCharacters(platform, vm.playerDetails.membershipId).then(function (Response) {
+                    BungieAPI.getCharacters(vm.platform, vm.playerDetails.membershipId).then(function (Response) {
                         vm.characters = Response.data.characters;
                         vm.characterDefinitions = Response.definitions;
                     });

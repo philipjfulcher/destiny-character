@@ -25,7 +25,7 @@ inventory-item {
         transition: all 200ms;
 
         &.active {
-            opacity: 1;
+            opacity: 0.9;
         }
 
         .inventory-item-hover-over-header {
@@ -45,5 +45,26 @@ inventory-item {
             padding: 18px;
             background-color: rgba(17,12,21,0.95)
         }
+    }
+
+    .inventory-item-hover-over-header-name {
+        width: 100%;
+        text-transform: capitalize;
+        height: (64px)/2;
+    }
+
+    .inventory-item-hover-over-header-details {
+        width: 100%;
+        span {
+            width: 50%;
+            float: left;
+            &.inventory-item-hover-over-header-details-type {
+                text-align: left;
+            }
+            &.inventory-item-hover-over-header-details-tier {
+                text-align: right;
+            }
+        }
+
     }
 }
