@@ -2,16 +2,18 @@
   "name": "destiny-character",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/src/app/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "npm run build & gulp watch & gulp webserver",
+    "build": "gulp build",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/philipjfulcher/destiny-character.git"
   },
-  "author": "Philip Fulhcer",
-  "license": "ISC",
+  "author": "Philip Fulcher",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/philipjfulcher/destiny-character/issues"
   },
@@ -28,5 +30,8 @@
     "gulp-angular-templatecache": "^2.0.0",
     "gulp-watch": "^4.3.11",
     "gulp-batch": "^1.0.5"
+  },
+  "volta": {
+    "node": "6.17.1"
   }
 }

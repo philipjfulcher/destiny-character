@@ -8,7 +8,7 @@
     BungieAPI.$inject = ['$http'];
 
     function BungieAPI($http) {
-        this.baseUrl = 'www.bungie.net/platform/Destiny/';
+        this.baseUrl = 'www.bungie.net/d1/platform/Destiny/';
         this.baseInsecureUrl = 'http://'+this.baseUrl;
         this.baseSecureUrl = 'https://'+this.baseUrl;
         this.assetsUrl = 'http://www.bungie.net/';

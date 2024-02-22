@@ -1,12 +1,12 @@
 <h1>Character</h1>
-<div class="column left-half">
+<div ng-if="vm.items" class="column left-half">
     <inventory-item item="vm.items[0]"></inventory-item>
     <inventory-item item="vm.items[1]"></inventory-item>
     <inventory-item item="vm.items[2]"></inventory-item>
     <inventory-item item="vm.items[3]"></inventory-item>
     <inventory-item item="vm.items[4]"></inventory-item>
 </div>
-<div class="column right-half">
+<div ng-if="vm.items" class="column right-half">
     <inventory-item item="vm.items[5]"></inventory-item>
     <inventory-item item="vm.items[6]"></inventory-item>
     <inventory-item item="vm.items[7]"></inventory-item>
